@@ -1,15 +1,31 @@
 module Types
   class QueryType < Types::BaseObject
-    # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    field :wiki_anniversaries, [Types::WikiAnniversaryType], null: false
+    field :wiki_anniversaries, [WikiAnniversaryType], null: false
     def wiki_anniversaries
       WikiAnniversary.all
+    end
+
+    field :find_all_wiki_anniversaries, [WikiAnniversaryType], null: false, description: "日付指定でwikiから取得した記念日を返す" do
+      argument :date, String, "日付", required: true
+    end
+    def find_all_wiki_anniversaries(date:)
+      WikiAnniversary.where(date: date)
+    end
+
+
+    field :user_anniversaries, [WikiAnniversaryType], null: false
+    def user_anniversaries
+      UserAnniversary.all
+    end
+
+    field :find_all_user_anniversaries, [WikiAnniversaryType], null: false, description: "日付指定でuserが作成した記念日を返す" do
+      argument :date, String, "日付", required: true
+    end
+    def find_all_user_anniversaries(date:)
+      UserAnniversary.where(date: date)
     end
   end
 end
