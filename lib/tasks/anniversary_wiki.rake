@@ -1,6 +1,6 @@
 namespace :anniversary_wiki do
   desc "media_wikiから記念日データを取得"
-  task :create_anniversary_by_fetch_data do
+  task create_anniversary_by_fetch_data: :environment do
     require 'faraday'
     require 'json'
     #日本の記念日一覧に該当する記事全体をjson形式で取得
@@ -27,5 +27,18 @@ namespace :anniversary_wiki do
       #ハッシュのvalueをハッシュ形式に変換
       hash[month] = Hash[*hash[month].compact.flatten(1)]
     end
+    #バルクインサートしたいものを突っ込んでく
+    wiki_anniversaries = []
+
+    months.each_with_index do |month, index|
+      hash[month].each do |key, value|
+        date = (index) < 9 ? "0#{(index + 1).to_s}#{key}" : (index + 1).to_s + key
+        value.each { |name| wiki_anniversaries << WikiAnniversary.new(date: date, name: name) }
+      end
+    end
+    #WikiAnniversaryのデータを全消し
+    WikiAnniversary.delete_all
+    #バルクインサート処理
+    WikiAnniversary.import(wiki_anniversaries)
   end
 end
