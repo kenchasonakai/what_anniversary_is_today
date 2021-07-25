@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "user_anniversaries", force: :cascade do |t|
+    t.string "date"
+    t.text "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "wiki_anniversaries", force: :cascade do |t|
     t.string "date"
     t.text "name"
