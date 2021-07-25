@@ -1,0 +1,7 @@
+{
+  "name": "what_anniversary_is_today",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kenchasonakai/what_anniversary_is_today.git",
+  "license": "MIT"
+}
