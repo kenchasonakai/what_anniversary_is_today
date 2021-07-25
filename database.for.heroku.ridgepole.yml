@@ -1,0 +1,2 @@
+pproduction:
+  url: <%= ENV['DATABASE_URL'] %>
