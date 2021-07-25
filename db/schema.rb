@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "user_anniversaries", force: :cascade do |t|
     t.string "date"
-    t.text "name"
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "wiki_anniversaries", force: :cascade do |t|
     t.string "date"
-    t.text "name"
+    t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
