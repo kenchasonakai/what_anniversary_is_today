@@ -52,6 +52,8 @@ GEM
     activerecord (6.1.4)
       activemodel (= 6.1.4)
       activesupport (= 6.1.4)
+    activerecord-import (1.2.0)
+      activerecord (>= 3.2)
     activestorage (6.1.4)
       actionpack (= 6.1.4)
       activejob (= 6.1.4)
@@ -229,6 +231,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  activerecord-import
   bootsnap (>= 1.4.4)
   faraday
   listen (~> 3.3)
