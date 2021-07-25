@@ -11,8 +11,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'ridgepole'
 gem 'faraday'
 gem 'activerecord-import'
+gem 'graphql'
 
 group :development, :test do
+  gem 'graphiql-rails'
   gem 'rspec-rails'
   gem 'pry-byebug'
   gem 'rubocop', require: false
