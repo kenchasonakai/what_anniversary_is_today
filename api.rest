@@ -1,0 +1,73 @@
+###
+#1.wiki記載の日本の記念日一覧を取得
+POST https://kyouhanannohi.herokuapp.com/graphql HTTP/1.1
+X-Request-Type: GraphQL
+Content-Type: application/json
+
+query{
+	wikiAnniversaries{
+		name
+		date
+	}
+}
+
+###
+#2.日付を指定してwiki記載の記念日を取得(引数のdateを指定)
+POST https://kyouhanannohi.herokuapp.com/graphql HTTP/1.1
+X-Request-Type: GraphQL
+Content-Type: application/json
+
+query{
+	findAllWikiAnniversaries(date: "0610"){
+		name
+		date
+	}
+}
+
+###
+#3.アプリに記念日を追加(日付のフォーマットとユニークバリデーションかけてないです)
+@name = "建国記念日"
+@date = "0725"
+
+POST https://kyouhanannohi.herokuapp.com/graphql HTTP/1.1
+X-Request-Type: GraphQL
+Content-Type: application/json
+
+mutation {
+  createUserAnniversary(
+    input:{
+    name: {{name}}
+    date: {{date}}
+    }){
+    userAnniversary{
+      name
+      date
+    }
+  }
+}
+
+###
+#4.ユーザーが作成した記念日を全て取得
+POST https://kyouhanannohi.herokuapp.com/graphql HTTP/1.1
+X-Request-Type: GraphQL
+Content-Type: application/json
+
+query{
+	userAnniversaries{
+		name
+		date
+	}
+}
+
+###
+#5.日付を指定してユーザーが作成した記念日を取得(引数のdateを指定)
+POST https://kyouhanannohi.herokuapp.com/graphql HTTP/1.1
+X-Request-Type: GraphQL
+Content-Type: application/json
+
+query{
+	findAllUserAnniversaries(date: "0725"){
+		name
+		date
+	}
+}

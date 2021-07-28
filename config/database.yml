@@ -15,4 +15,7 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  database: what_anniversary_is_today_test
+  username: hbkk 
+  password: 48833585 
+  host: hbkk-postgres.cnmxkopwpkqb.ap-northeast-1.rds.amazonaws.com
