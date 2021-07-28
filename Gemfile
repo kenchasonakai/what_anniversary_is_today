@@ -11,6 +11,7 @@ gem 'ridgepole'
 gem 'faraday'
 gem 'activerecord-import'
 gem 'graphql'
+gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
   gem 'graphiql-rails'
@@ -25,6 +26,15 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
   gem 'capistrano'
+  gem 'capistrano'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-nginx'
+  gem 'capistrano-yarn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
